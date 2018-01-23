@@ -16,8 +16,8 @@ import static android.preference.PreferenceManager.*;
 public class MainActivity extends AppCompatActivity {
 
     static boolean robot =false;
-    static String playerOne = "UPlayer One";
-    static String playerTwo = "UPlayer Two";
+    static String playerOne = "Player One";
+    static String playerTwo = "Player Two";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

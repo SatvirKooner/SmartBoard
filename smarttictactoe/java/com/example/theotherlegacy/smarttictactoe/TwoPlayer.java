@@ -38,6 +38,7 @@ public class TwoPlayer extends AppCompatActivity {
         b[7] = (Button) findViewById(R.id.b8);
         b[8] = (Button) findViewById(R.id.b9);
 
+        //to-do: clean bad code
         for (int i = 0; i < b.length; i++) {
             final int c = i;
             b[i].setTextSize(40);
@@ -139,8 +140,9 @@ public class TwoPlayer extends AppCompatActivity {
         }
     }
 
+    //getsnextmove for AI
     public  int getNextMove(int[][]state, int player) {
-        boolean moved = false;
+
         MiniMax mmax = new MiniMax();
         int move=mmax.getAIMove(state, 2);
         return move;
@@ -149,12 +151,14 @@ public class TwoPlayer extends AppCompatActivity {
 
     }
 
+    //creates list of all the moves
     public void createBoardList() {
         for (int i = 0; i < 9; i++) {
             buts.add(i);
         }
     }
 
+    //creates the game board as a 2d array
     public void createBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -163,6 +167,7 @@ public class TwoPlayer extends AppCompatActivity {
         }
     }
 
+    //disabled visual grid
     public void disableBoard() {
         for (int i = 0; i < 9; i++) {
             b[i].setEnabled(false);
@@ -170,6 +175,7 @@ public class TwoPlayer extends AppCompatActivity {
         }
     }
 
+    //slightly more efficient version of previous isgameover 
     public int isGameOver(int[][] grid) {
         if ((grid[0][0] != 0) && (grid[0][0] == grid[0][1]) && (grid[0][1] == grid[0][2]))
             return grid[0][0];
@@ -192,6 +198,7 @@ public class TwoPlayer extends AppCompatActivity {
         } else
         return -1;
 
+ 
          /*   int zeros = 0;
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -207,6 +214,7 @@ public class TwoPlayer extends AppCompatActivity {
 
     }
 
+    
     public int minimax(int[][] state, int depth, int player) {
         int[][] currentState;
         int gameStatus = isGameOver(state);
@@ -244,6 +252,8 @@ public class TwoPlayer extends AppCompatActivity {
 
     }
 
+    
+    //updates 2d array to match gameboard
     public void updateBoard(int position, int player) {
         if (player == 1) {
             switch (position) {

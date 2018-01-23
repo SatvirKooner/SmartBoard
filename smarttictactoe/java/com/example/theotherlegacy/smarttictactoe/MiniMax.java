@@ -12,11 +12,13 @@ public class MiniMax {
 	}
 
 	public static void myfunc() {
-								
+		//starting state for running tests					
 		int[][] testState = { { 0, 0, 0}, 
-							  { 0, 0, 0}, 
-							  { 0, 0, 0} };
-		// ArrayList<int [][]> posmoves = nextMoves (testState,2);
+				      { 0, 0, 0}, 
+			              { 0, 0, 0} };
+		//Testing code commented out
+		//
+		//ArrayList<int [][]> posmoves = nextMoves (testState,2);
 		/*
 		 * for(int [][] move :posmoves){ sayBoard(move); System.out.println(); }
 		 */
@@ -26,6 +28,10 @@ public class MiniMax {
 		// System.out.println(minimax(testState, 0, 2));
 		// System.out.println(nextMove[0] + "," + nextMove[1]);
 	}
+	
+	
+	//takes the current state as a 2d array and the current player and returns the move with the 
+	//highest node value and the lowest index.
 	public int getAIMove(int[][] state,int player){
 		minimax(state,0,player,1);
 		if (nextMove[0]==0){
@@ -54,10 +60,10 @@ public class MiniMax {
 		}
 
 
-
+	//modified minimax algorithim that searches graph for the closest move (lowest depth) with 
+	//the highest score
 	public static int minimax(int[][] state, int depth, int player, int iter) {
 		int gameStatus = isGameOver(state);
-		// System.out.println(gameStatus);
 		if (gameStatus == 2) {
 			return (10 - depth);
 		} else if (gameStatus == 1) {
@@ -103,6 +109,7 @@ public class MiniMax {
 
 	}
 
+	//generates the next possible moves given a gamestate
 	public static ArrayList<int[][]> nextMoves(int[][] state, int player, int iter) {
 		ArrayList<int[]> posmoves = new ArrayList<int[]>();
 		ArrayList<int[][]> nextStates = new ArrayList<int[][]>();
@@ -149,34 +156,12 @@ public class MiniMax {
 			}
 		}
 	}
-
-   /* public static int minimax2(int[][] state, int depth, int player, int
-	  iter) { int gameStatus = isGameOver(state); 
-	  ArrayList<Integer> scores = new ArrayList<Integer>(); 
-	  if (gameStatus == 2){
-	  System.out.println(10-depth); return 10 - depth;}
-	  else if (gameStatus == 1){ 
-		  System.out.println(depth-10); return depth - 10;} 
-	  else if (gameStatus== 0){ System.out.println(0); 
-	  return 0;}
-	  else if (player == 1) { for (int
-	  
-	  i = 0; i < 3; i++) { for (int j = 0; j < 3; j++) { int[][] currentState =
-	  state.clone(); if (currentState[i][j] == 0) { currentState[i][j] =
-	  player;  // scores.add(minimax(currentState, ++depth, 2, 0)); } }
-	  } return (Collections.min(scores)); else { ArrayList<int[]> posmoves =
-	  new ArrayList<int[]>(); ; for (int i = 0; i < 3; i++) { for (int j = 0; j
-	  < 3; j++) { int[][] currentState = state.clone(); if (currentState[i][j]
-	  == 0) { currentState[i][j] = player;  //
-	  scores.add(minimax(currentState, ++depth, 1, 0)); if (iter == 1) { int[]
-	  nmove = { i, j }; posmoves.add(nmove); } } } } int max =
-	  Collections.max(scores); if (iter == 1) { int index =
-	  scores.indexOf(max); nextMove = posmoves.get(index);
-	  
-	  return max; } else return max; }
-	 
-	  }*/
-
+  
+	
+	//checks if the gamee is over, if it is returns either 1, 2 or 0 indicating that either
+	//player x won, player o won or it is a tie game. In the case of the game not being over
+	//it returns a -1
+	
 	public static int isGameOver(int[][] grid) {
 		if ((grid[0][0] != 0) && (grid[0][0] == grid[0][1]) && (grid[0][1] == grid[0][2]))
 			return grid[0][0];

@@ -1,3 +1,4 @@
+// Class to run tests on new changes before implementing in actual app.
 package com.example.theotherlegacy.smarttictactoe;
 
 import java.util.ArrayList;
